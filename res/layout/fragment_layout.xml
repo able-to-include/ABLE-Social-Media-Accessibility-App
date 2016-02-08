@@ -1,0 +1,47 @@
+<com.services.able2includeapp.DashboardLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:background="#f8f9fe" >
+
+	<!--  News Feed Button -->
+    <Button
+        android:id="@+id/btn_facebook"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_facebook"
+        android:text="Facebook" />
+      <Button
+        android:id="@+id/btn_messenger"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_messenger"
+        android:text="Messenger" />  
+	<!--  Friends Button -->
+    <Button
+        android:id="@+id/btn_whatsapp"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_whatsapp"
+        android:text="Whatsapp" />
+    
+	<!--  Messages Button -->
+    <Button
+        android:id="@+id/btn_twitter"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_twitter"
+        android:text="Twitter" />
+    <!--  SafeSurf Button -->
+    <Button
+        android:id="@+id/btn_safesurf"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_safesurf"
+        android:text="SafeSurfing" />	
+    <!--  Places Button -->
+    <Button
+        android:id="@+id/btn_settings"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_settings"
+        android:text="Settings" />
+
+
+
+</com.services.able2includeapp.DashboardLayout>

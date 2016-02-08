@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background ="@drawable/border"
+    android:padding="1dip">
+
+            <ImageButton
+                android:id="@+id/buttonSimpleText" 
+                android:scaleType="centerInside"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                 android:layout_marginTop="30dp"
+                android:src="@drawable/ic_action_edit"
+                android:padding="2dip"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/roundtopcorner"
+                
+            />   
+  <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimaryDark" />          
+            <ImageButton 
+                android:id="@+id/buttonTextToSpeech"
+                android:scaleType="centerInside"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_action_play"
+                android:padding="2dip"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/roundtopcorner"
+             
+            />     
+  <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimaryDark" />          
+            <ImageButton
+                android:id="@+id/buttonTextToPicto" 
+                android:scaleType="centerInside"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_action_picture"
+                android:padding="2dip"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/roundtopcorner"
+                
+            /> 
+
+</LinearLayout>

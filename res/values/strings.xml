@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="accessibility_service_description">AbletoInclude(V2) Accessibility integrates the three services provided by Able to Include Consortium partners. \n\nSimplext: Universidad Pompeu Fabra &amp; Ariadna S.I.\n\nText2Picto: Katholieke Universiteit Leuven\n\neSpeak: a Text2Speech open source tool.\n\n</string>
+    <string name="app_name">AbletoInclude</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello">Hello World, AndroidDashboardDesignActivity!</string>
+        <string name="test_service_on">Test Service is on</string>
+    <string name="test_service_off">Test Service is off</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#525f67">
+
+
+
+    <TextView
+        android:id="@+id/customtitlebar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:text="AbletoInclude"
+        android:padding="3px"
+        android:textStyle="bold" 
+        android:textSize="20sp"
+       android:background="@color/colorPrimary" 
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"/>
+
+     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/colorPrimary" 
+        android:layout_below="@+id/customtitlebar"><!-- This is line below the title -->
+    </ImageView>
+
+</RelativeLayout>

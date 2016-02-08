@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+ <PreferenceCategory
+   android:summary="Select the SimpleText lanuage"
+   android:title="SimpleText Language Settings" >
+    <ListPreference
+     android:entries="@array/simpleTextOptions"
+     android:entryValues="@array/simpleTextValues"
+     android:key="listsimpleTextLang"
+     android:summary="Language Perference"
+     android:title="SimpleText Language" 
+     android:defaultValue="English"/>
+ </PreferenceCategory>   
+ <PreferenceCategory
+   android:summary="Select the Pictogram base"
+   android:title="Pictogram Settings" >
+  <ListPreference
+     android:entries="@array/listOptions"
+     android:entryValues="@array/listValues"
+     android:key="listpref"
+     android:summary="Pictogram Base"
+     android:title="Pictogram"
+     android:defaultValue="Beta" />
+    <ListPreference
+     android:entries="@array/pictoLangOptions"
+     android:entryValues="@array/pictoLangValues"
+     android:key="listpictoLang"
+     android:summary="Pictogram language perference"
+     android:title="Language"
+     android:defaultValue="English" />
+ </PreferenceCategory>
+ <PreferenceCategory
+   android:summary="Select the Text2Speech Engine"
+   android:title="Text2Speech Settings" >
+      <ListPreference
+     android:entries="@array/textToSpeechEngineOptions"
+     android:entryValues="@array/textToSpeechEngineValues"
+     android:key="listextToSpeechEngine"
+     android:summary="Text2Speech Engine Selection"
+     android:title="Engine Selection" 
+     android:defaultValue="Local" 
+    />
+  <ListPreference
+     android:entries="@array/textToSpeechOptions"
+     android:entryValues="@array/textToSpeechValues"
+     android:key="listextToSpeechLang"
+     android:summary="Language Perference"
+     android:title="Text2Speech Language"
+     android:defaultValue="English" 
+    />
+ </PreferenceCategory>
+   <PreferenceCategory
+   android:summary="Defines the maximum block of text"
+   android:title="Configure the Max Word Count" >
+ 	<EditTextPreference 
+ 	 android:summary="Max amount of selectable words sent to services."
+     android:title="Maximum Word Count" 
+     android:key="maxWordCount"
+     android:defaultValue="10"
+     android:inputType="number" 
+ 	    />
+
+  </PreferenceCategory>   
+</PreferenceScreen>

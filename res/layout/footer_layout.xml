@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" 
+   style="@style/FooterBar" >
+    <ImageView 
+        android:id="@+id/footerlogo"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_alignParentLeft="true"/>
+    <TextView 
+        android:id="@+id/footertext"
+ android:text="abletoInclude.eu"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:textColor="#606060"
+	    	android:paddingTop="10dip"
+        android:layout_centerInParent="true"/>
+    <ImageView 
+  android:id="@+id/footerflag"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/flag"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

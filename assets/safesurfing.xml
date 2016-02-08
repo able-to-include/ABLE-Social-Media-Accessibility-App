@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<videos>
+	<language>
+		<source>english</source>
+		<video>     
+			<title>What should I share</title>
+			<uri>https://youtu.be/UcBhqYLTfjA?list=PLia1JRH3Zek0bQhFbfb4ngKvt62iUlwCz</uri>			
+		</video>
+		<video>     
+			<title>Use the Internet Safely</title>
+			<uri>https://youtu.be/rPy_Jy8qIBE?list=PLia1JRH3Zek0bQhFbfb4ngKvt62iUlwCz</uri>			
+		</video>
+		<video>     
+			<title>Internet things I need to know</title>
+			<uri>https://youtu.be/VWpQrfmI8uI?list=PLia1JRH3Zek0bQhFbfb4ngKvt62iUlwCz</uri>			
+		</video>
+	</language>	
+	<language>
+		<source>spanish</source>
+		<video>     
+			<title>Qué debo compartir</title>
+			<uri>https://youtu.be/I6GBV8ReIxY?list=PLia1JRH3Zek0G7aI3FmpYLqApycDBnTDY</uri>			
+		</video>
+		<video>     
+			<title>El uso de Internet de forma segura</title>
+			<uri>https://youtu.be/AiyegoefKoo?list=PLia1JRH3Zek0G7aI3FmpYLqApycDBnTDY</uri>			
+		</video>
+		<video>     
+			<title>Cosas de Internet que necesitan saber</title>
+			<uri>https://youtu.be/Wv7_X_mVzPU?list=PLia1JRH3Zek0G7aI3FmpYLqApycDBnTDY</uri>			
+		</video>
+	</language>	
+	<language>
+		<source>french</source>
+		<video>     
+			<title>Que dois-je partager</title>
+			<uri>https://youtu.be/RoiXdWnmUX4?list=PLia1JRH3Zek2MJSRKyN6aZPYX1h2fc8MU</uri>			
+		</video>
+		<video>     
+			<title>Utiliser Internet en toute sécurité</title>
+			<uri>https://youtu.be/yhTssMSrxSM?list=PLia1JRH3Zek2MJSRKyN6aZPYX1h2fc8MU</uri>			
+		</video>
+		<video>     
+			<title>Appareils mobiles</title>
+			<uri>https://youtu.be/1ILbZRrOCDQ</uri>			
+		</video>
+	</language>	
+	<language>
+		<source>italian</source>
+		<video>     
+			<title>Cosa devo condividere</title>
+			<uri>https://youtu.be/VhAvpdvYjmU?list=PLia1JRH3Zek0m6iKY1QRaSvr39A1BztVX</uri>			
+		</video>
+		<video>     
+			<title>Utilizzare Internet in modo sicuro</title>
+			<uri>https://youtu.be/ZmRwSjawUIs?list=PLia1JRH3Zek0m6iKY1QRaSvr39A1BztVX </uri>			
+		</video>
+		<video>     
+			<title>Le cose internet ho bisogno di sapere</title>
+			<uri>https://youtu.be/nUrOCRe2NXU?list=PLia1JRH3Zek0m6iKY1QRaSvr39A1BztVX</uri>			
+		</video>
+		<video>     
+			<title>Dispositivi mobili</title>
+			<uri>https://youtu.be/WlXX4rImdBc</uri>			
+		</video>
+	</language>	
+	<language>
+		<source>polish</source>
+		<video>     
+			<title>Co mam dzielić</title>
+			<uri>https://youtu.be/YuSnJ0Mpk6M?list=PLia1JRH3Zek1o6LG_V7CHB7RcHMvDLwfU</uri>			
+		</video>
+		<video>     
+			<title>Internet rzeczy trzeba wiedzieć</title>
+			<uri>https://youtu.be/-K0Cp5VehBc?list=PLia1JRH3Zek1o6LG_V7CHB7RcHMvDLwfU</uri>			
+		</video>
+	</language>
+</videos>

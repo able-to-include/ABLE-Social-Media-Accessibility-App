@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+     android:description="@string/accessibility_service_description"
+     android:accessibilityEventTypes="typeViewClicked|typeViewHoverEnter|typeViewFocused"
+     android:accessibilityFeedbackType="feedbackAllMask"
+     android:accessibilityFlags="flagDefault|flagReportViewIds"
+     android:notificationTimeout="0"
+     android:canRetrieveWindowContent="true"
+     android:canRequestTouchExplorationMode="true"
+     android:packageNames="com.facebook.katana,com.facebook.orca,com.whatsapp,com.viber.voip,com.twitter.android"
+     android:settingsActivity="com.services.able2includeapp.ServiceSettingsActivity"
+/>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <resources>
+   <string-array name="listOptions">
+     <item>Beta</item>
+     <item>Sclera</item>
+    </string-array>
+   <string-array name="listValues">
+     <item>Beta</item>
+     <item>Sclera</item>
+   </string-array>
+   <string-array name="pictoLangOptions">
+     <item>English</item>
+     <item>Dutch</item>
+     <item>Spanish</item>
+   </string-array>
+   <string-array name="pictoLangValues">
+     <item>English</item>
+     <item>Dutch</item>
+     <item>Spanish</item>
+   </string-array>
+   <string-array name="simpleTextOptions">
+     <item>English</item>
+     <item>Spanish</item>
+   </string-array>
+   <string-array name="simpleTextValues">
+     <item>English</item>
+     <item>Spanish</item>
+   </string-array>
+   <string-array name="textToSpeechOptions">
+     <item>English</item>
+     <item>French</item>
+     <item>Spanish</item>
+   </string-array>
+   <string-array name="textToSpeechValues">
+     <item>English</item>
+     <item>French</item>
+     <item>Spanish</item>
+   </string-array>
+   <string-array name="textToSpeechEngineOptions">
+     <item>Local</item>
+     <item>eSpeak</item>
+   </string-array>
+    <string-array name="textToSpeechEngineValues">
+     <item>Local</item>
+     <item>eSpeak</item>
+   </string-array>
+ </resources>
