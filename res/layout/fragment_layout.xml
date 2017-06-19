@@ -40,7 +40,7 @@
         android:id="@+id/btn_settings"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_settings"
-        android:text="Settings" />
+        android:text="@string/SettingsString" />
 
 
 

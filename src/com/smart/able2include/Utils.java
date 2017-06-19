@@ -2,6 +2,7 @@ package com.smart.able2include;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class Utils {
     public static void CopyStream(InputStream is, OutputStream os)
@@ -25,4 +26,41 @@ public class Utils {
         }
         catch(Exception ex){}
     }
+    public static boolean stringContainsItemFromList(String inputString, String[] items)
+    {
+        for(int i =0; i < items.length; i++)
+        {
+            if(inputString.contains(items[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+	public static ArrayList<PictoBaseCategory> GetParentCollection(ArrayList<PictoBaseCategory> categories,String parentId)
+	{
+		ArrayList<PictoBaseCategory> pictoBaseList = new ArrayList<>();
+		String parentZero = "0";
+		for (PictoBaseCategory p: categories) {
+		    try {
+		        // here you could evaluate you property or field
+		    	if(parentId.equalsIgnoreCase(parentZero))
+		    	{
+		    		if(p.parentId.equalsIgnoreCase(parentId))
+		    		{
+		    			pictoBaseList.add(p);
+		    		}	
+		    	}
+		    	else
+		    	{
+		    		if(p.id.equalsIgnoreCase(parentId))
+		    		{
+		    			pictoBaseList.add(p);
+		    		}
+		    	}
+		    } catch (Exception ignored) {
+		    }
+		}
+		return pictoBaseList;
+	}
 }

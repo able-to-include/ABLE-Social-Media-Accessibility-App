@@ -27,7 +27,10 @@ import com.smart.network.AsyncResponse;
 import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +42,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SimpleTextOverlayView extends View {
+public class SimpleTextOverlayView extends View implements OnInitListener{
 	private LinearLayout mLandscapeView;
 	private LinearLayout myPortraitView;
 	private Context mServiceContext;
@@ -49,16 +52,26 @@ public class SimpleTextOverlayView extends View {
     private RelativeLayout frameLayout;
     private Button dialogButton;
     private String mSimpleText;
+    private TextView text;
     private Object mSyncToken = new Object();
     public OverlayClick delegate = null;//Call back interface
+    private TextToSpeech mInternalTTS;
+    private Boolean btoggle;
 	public SimpleTextOverlayView(OverlayClick click,Context context,WindowManager mng,int Orientation,String texttoDisplay) {
 		super(context);
 		mServiceContext = context;
 		wm = mng;
 		mSimpleText = texttoDisplay;
+		  this.mInternalTTS = new TextToSpeech(this.mServiceContext, null);
 		delegate = click;
+		btoggle = false;
 		createView();
 
+	}
+	@Override
+	public void onInit(int status) {
+		// TODO Auto-generated method stub
+		
 	}
 	  private void createView() {
 			WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
@@ -77,8 +90,26 @@ public class SimpleTextOverlayView extends View {
 	        // Here is the place where you can inject whatever layout you want.
 	        layoutInflater.inflate(R.layout.simpletxt_layout, frameLayout);
 		
-			TextView text = (TextView) frameLayout.findViewById(R.id.textViewSimplifiedText);
+		 text = (TextView) frameLayout.findViewById(R.id.textViewSimplifiedText);
 		    text.setText(mSimpleText);
+		    text.setOnClickListener(new OnClickListener(){
+	 			@SuppressWarnings("deprecation")
+				@Override
+	 			public void onClick(View v) {
+	 		
+	 			    
+	 				mInternalTTS.speak(mSimpleText, TextToSpeech.QUEUE_FLUSH, null);
+	 				if(btoggle == false)
+	 				{
+	 			     text.setTextColor(getResources().getColor(R.color.colorPrimary));
+	 				}
+	 				else
+	 				{
+	 					text.setTextColor(Color.WHITE);	
+	 				}
+	 				btoggle = !btoggle;
+	  				}	
+			});
 			 dialogButton = (Button) frameLayout.findViewById(R.id.simpleButtonOK);
 			// if button is clicked, close the custom dialog
 			dialogButton.setOnClickListener(new OnClickListener() {

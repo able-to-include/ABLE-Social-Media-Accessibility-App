@@ -45,7 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 
-import com.meetme.android.horizontallistview.HorizontalListView;
+//import com.meetme.android.horizontallistview.HorizontalListView;
 import com.services.able2includeapp.R;
 import com.services.accessibility.AccessibilityServiceUtil;
 
@@ -113,7 +113,8 @@ public class AndroidDashboardDesignActivity extends Activity {
 				}
 				catch(Exception e)
 				{
-					Toast.makeText(getApplicationContext(),"Error Please ensure FaceBook is installed!", Toast.LENGTH_SHORT).show();
+					
+					Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorFaceBook), Toast.LENGTH_SHORT).show();
 
 				}
 			}
@@ -130,7 +131,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 				}
 				catch(Exception e)
 				{
-					Toast.makeText(getApplicationContext(),"Error Please ensure Messenger is installed!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorMessenger), Toast.LENGTH_SHORT).show();
 
 				}
 			}
@@ -146,7 +147,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 			}
 			catch(Exception e)
 			{
-				Toast.makeText(getApplicationContext(),"Error Please ensure WhatsApp is installed!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorWhatsApp), Toast.LENGTH_SHORT).show();
 
 			}
 			}
@@ -162,7 +163,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 			}
 			catch(Exception e)
 			{
-				Toast.makeText(getApplicationContext(),"Error Please ensure Twitter is installed!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorTwitter), Toast.LENGTH_SHORT).show();
 
 			}
 			}
@@ -196,6 +197,8 @@ public class AndroidDashboardDesignActivity extends Activity {
 					String title = "Select your video to load.";
 				    ArrayList<Videos> options = null;
 				    ArrayList<String> listsel = new ArrayList<String>();
+					Toast.makeText(getApplicationContext(),localsetting, Toast.LENGTH_LONG).show();
+
 					if(localsetting.contains("fr"))
 					{
 						lang = "french";
@@ -258,6 +261,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 
 		String lang = "english";
 		options = youtubeclips.getYoutubeClips();
+		
 		if(localsetting.contains("fr"))
 		{
 			lang = "french";
@@ -357,7 +361,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	    				}
 	    				catch(Exception e)
 	    				{
-	    					Toast.makeText(getApplicationContext(),"Error Please ensure FaceBook is installed!", Toast.LENGTH_SHORT).show();
+	    					Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorFaceBook), Toast.LENGTH_SHORT).show();
 
 	    				}
 	        			}
@@ -373,7 +377,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	        				}
 	        				catch(Exception e)
 	        				{
-	        					Toast.makeText(getApplicationContext(),"Error Please ensure Messenger is installed!", Toast.LENGTH_SHORT).show();
+	        					Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorMessenger), Toast.LENGTH_SHORT).show();
 
 	        				}
 	        			}
@@ -389,7 +393,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	    				}
 	    				catch(Exception e)
 	    				{
-	    					Toast.makeText(getApplicationContext(),"Error Please ensure WhatsApp is installed!", Toast.LENGTH_SHORT).show();
+	    					Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorWhatsApp), Toast.LENGTH_SHORT).show();
 
 	    				}
 	        			}
@@ -406,7 +410,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	    				}
 	    				catch(Exception e)
 	    				{
-	    					Toast.makeText(getApplicationContext(),"Error Please ensure Twitter is installed!", Toast.LENGTH_SHORT).show();
+	    					Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.errorTwitter), Toast.LENGTH_SHORT).show();
 
 	    				}
 	        			}
@@ -423,6 +427,8 @@ public class AndroidDashboardDesignActivity extends Activity {
 	        					String title = "Select your video to load.";
 	        				    ArrayList<Videos> options = null;
 	        				    ArrayList<String> listsel = new ArrayList<String>();
+	        					Toast.makeText(getApplicationContext(),localsetting, Toast.LENGTH_LONG).show();
+
 	        					if(localsetting.contains("fr"))
 	        					{
 	        						lang = "french";
@@ -481,7 +487,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 			 View customTitle=inflater.inflate(R.layout.customtitlebar, null);
 			 d=new AlertDialog.Builder(this,AlertDialog.THEME_HOLO_LIGHT);
 			 d.setCustomTitle(customTitle);
-			 d.setMessage("AbletoInclude services are not running. Activate services by clicking the \"Settings\" button. Then scroll to the \"Services\" section of Accessibility and switch it \"ON\"");
+			 d.setMessage(getApplicationContext().getString(R.string.ableServiceNotRunning));
 			 d.setNeutralButton("OK",  new DialogInterface.OnClickListener() {
 		            @Override
 		            public void onClick(DialogInterface dialog, int which) {

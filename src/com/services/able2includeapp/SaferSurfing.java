@@ -51,6 +51,7 @@ public class SaferSurfing {
 		}
 
 	}
+	
 	private void parseXML(XmlPullParser parser) throws XmlPullParserException,IOException
 	{
        int eventType = parser.getEventType();

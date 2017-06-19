@@ -1,14 +1,22 @@
 package com.smart.able2include;
+import android.R.color;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -18,22 +26,29 @@ import java.util.List;
 
 import com.services.able2includeapp.R;
 import com.smart.able2include.ImageLoader;
+import com.smart.network.PictoResponse;
 
-public class PictoListAdapter extends ArrayAdapter<String> {
+
+public class PictoListAdapter extends ArrayAdapter<PictoResponse>implements OnInitListener {
+    private TextToSpeech mInternalTTS = null;
 
     Context mContext;
-    List<String> objects;
-    List<String> requests;
+    List<PictoResponse> objects;
     public ImageLoader imageLoader; 
-    public PictoListAdapter(Context context, int textViewResourceId,
-                              List<String> objects,List<String> values) {
+     public PictoListAdapter(Context context, int textViewResourceId,
+                              List<PictoResponse> objects) {
         super(context, textViewResourceId, objects);
         this.mContext = context;
         this.objects = objects;
-        this.requests = values;
+        this.mInternalTTS = new TextToSpeech(this.mContext, null);
         imageLoader = new ImageLoader(context);
+        //this.mInternalTTS.speak("this is a long time to wait", TextToSpeech.QUEUE_FLUSH, null);
     }
-
+	@Override
+	public void onInit(int status) {
+		// TODO Auto-generated method stub
+		
+	}
     @Override
     public long getItemId(int position) {
         return position;
@@ -72,29 +87,28 @@ public class PictoListAdapter extends ArrayAdapter<String> {
         }
 
         // object item based on the position
-        String text = objects.get(position);
-        String req="";
-        if(requests != null)
-        {
-        	 if(position < requests.size())
-        	 {
-        		 req = requests.get(position);
-        	 }
-        }
+        Log.i("EDSTAG", ">>> getView position<<< " + position);
+        Log.i("EDSTAG", ">>> getView objects<<< " + objects);
+        String text = objects.get(position).text;
+        String uri = objects.get(position).uri;
+        Log.i("EDSTAG", ">>> getView uri<<< " + uri);
+        Log.i("EDSTAG", ">>> getView text<<< " + text);
+ 
+
         // assign values if the object is not null
-        if((text != null)){
+        if((uri != null)){
             //if (text.startsWith("http://")) {
             // get the TextView from the ViewHolder and then set the text (item name) and tag (item ID) values
-              if (text.startsWith("http://")) {
-                viewHolder.pictoName.setText("");
+              if (uri.startsWith("http://")) {
+                viewHolder.pictoName.setText(text);
                //viewHolder.pictoName.setText(req);
             } else {
             	
                 viewHolder.pictoName.setText(text);
-            }
+            }           
             //DisplayImage function from ImageLoader Class
-            imageLoader.DisplayImage(text, viewHolder.pictoImage);
-
+            imageLoader.DisplayImage(uri, viewHolder.pictoImage);
+            viewHolder.pictoImage.setOnClickListener(new MyOnClickListener(text,this.mContext,this.mInternalTTS));
         }
 
         return convertView;
@@ -151,6 +165,30 @@ public class PictoListAdapter extends ArrayAdapter<String> {
                 }
             }
         }
+    }
+    class MyOnClickListener implements OnClickListener
+    {
+     private final String mText;
+     private Context mContext;
+     private TextToSpeech mTTS;
+
+
+     public MyOnClickListener(String text,  Context ctx,TextToSpeech tts)
+     {
+      this.mText = text;
+      this.mContext = ctx;
+      this.mTTS = tts;
+     }
+
+     @SuppressWarnings("deprecation")
+	public void onClick(View v)
+     {
+
+
+    	 this.mTTS.speak(this.mText, TextToSpeech.QUEUE_FLUSH, null);
+    	 
+     	// Toast.makeText(mContext,this.mText, Toast.LENGTH_SHORT).show();
+     }
     }
 }
 

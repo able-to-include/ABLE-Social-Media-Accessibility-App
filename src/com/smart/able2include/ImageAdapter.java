@@ -85,6 +85,8 @@ public class ImageAdapter extends BaseAdapter {
 		    protected Bitmap doInBackground(ViewHolder... params) {
 		        v = params[0];
 		        Bitmap bm = decodeSampledBitmapFromUri(itemList.get(position), 220, 220);
+		        
+		        //Bitmap bm = decodeSampledBitmapFromUri(itemList.get(position), 100, 100);
 		        return bm;
 		    }
 

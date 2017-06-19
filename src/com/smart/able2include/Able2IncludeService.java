@@ -27,6 +27,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
+
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -53,6 +54,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
@@ -77,12 +79,14 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.VideoView;
+
 import com.services.able2includeapp.R;
 
 @SuppressWarnings("unused")
@@ -107,8 +111,10 @@ public class Able2IncludeService extends AccessibilityService {
 
 
 	 private String getProcess() throws Exception {
-		    if (Build.VERSION.SDK_INT >= 21) {
+		    if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
 	    		String [] test = new String[100];
+	    		//Log.i("EDSTAG", ">>> getLollipop <<< ");
+
 	    		test = getLollipop();
 	    		if(test.length > 0)
 	    		{
@@ -180,6 +186,8 @@ public class Able2IncludeService extends AccessibilityService {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		//Toast.makeText(getApplicationContext(),"Hello 123456", Toast.LENGTH_LONG).show();
+
 		if(mButtonOverlay == null)
 		{
 			mButtonOverlay = new SystemOverlayView(this);
@@ -201,14 +209,16 @@ public class Able2IncludeService extends AccessibilityService {
 				}
 				catch(Exception ex)
 				{
+					//Log.i("EDSTAG", ">>> ERROR getProcess <<< ");
 					ex.printStackTrace();
 				}
-
+				//Log.i("EDSTAG", ">>> TOP <<< "+ toppackage);
 		    	if(toppackage.equals("com.facebook.katana")||
 		    			toppackage.equals("com.whatsapp")||  
 		    			toppackage.equals("com.viber.voip")||
 		    			toppackage.equals("com.twitter.android")||
-		    			toppackage.equals("com.facebook.orca"))
+		    			toppackage.equals("com.facebook.orca")||
+		    			toppackage.equals(""))
 			       {
 			        //Do your work here
 
@@ -217,7 +227,7 @@ public class Able2IncludeService extends AccessibilityService {
 			       {
 			   	    	if(mButtonOverlay != null)
 			   	    	{
-			   	    		mButtonOverlay.cleanUp();
+			   	    		mButtonOverlay.cleanUp(true);
 			   	    	} 	   
 			       }
 		    
@@ -227,7 +237,7 @@ public class Able2IncludeService extends AccessibilityService {
 		//Set how long before to start calling the TimerTask (in milliseconds)
 		5000,
 		//Set the amount of time between each execution (in milliseconds)
-		500);
+		3000);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(BCAST_CONFIGCHANGED);
@@ -253,16 +263,16 @@ public class Able2IncludeService extends AccessibilityService {
 	        }
 	    };
 	    getApplicationContext().registerReceiver(mBroadcastReceiver, filter);
- 		Toast.makeText(getApplicationContext(),"AbletoInclude Services Created", Toast.LENGTH_LONG).show();
+ 		Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.ableServiceCreated), Toast.LENGTH_LONG).show();
 
 	}
 	@Override
 	public void onDestroy() {
- 		Toast.makeText(getApplicationContext(),"AbletoInclude Services Stopped", Toast.LENGTH_LONG).show();
+ 		Toast.makeText(getApplicationContext(),getApplicationContext().getString(R.string.ableServiceStopped), Toast.LENGTH_LONG).show();
 		timer.cancel();
 		if(mButtonOverlay != null)
 		{
-			mButtonOverlay.cleanUp();
+			mButtonOverlay.cleanUp(true);
 		}
 		getApplicationContext().unregisterReceiver(mBroadcastReceiver);
 		super.onDestroy();
@@ -288,8 +298,50 @@ public class Able2IncludeService extends AccessibilityService {
  		return true;
 	}
 
+    private String getEventType(AccessibilityEvent event) {
+        switch (event.getEventType()) {
+            case AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED:
+                return "TYPE_NOTIFICATION_STATE_CHANGED";
+            case AccessibilityEvent.TYPE_VIEW_CLICKED:
+                return "TYPE_VIEW_CLICKED";
+            case AccessibilityEvent.TYPE_VIEW_FOCUSED:
+                return "TYPE_VIEW_FOCUSED";
+            case AccessibilityEvent.TYPE_VIEW_LONG_CLICKED:
+                return "TYPE_VIEW_LONG_CLICKED";
+            case AccessibilityEvent.TYPE_VIEW_SELECTED:
+                return "TYPE_VIEW_SELECTED";
+            case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:
+                return "TYPE_WINDOW_STATE_CHANGED";
+            case AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED:
+                return "TYPE_VIEW_TEXT_CHANGED";
+        }
+        return "default";
+    }
 
+    private String getEventText(AccessibilityEvent event) {
+        StringBuilder sb = new StringBuilder();
+        for (CharSequence s : event.getText()) {
+            sb.append(s);
+        }
+        return sb.toString();
+    }
+    private AccessibilityNodeInfo getListItemNodeInfo(AccessibilityNodeInfo source) {
+        AccessibilityNodeInfo current = source;
+        while (true) {
+            AccessibilityNodeInfo parent = current.getParent();
+            if (parent == null) {
+                return null;
+            }
 
+            // NOTE: Recycle the infos.
+            AccessibilityNodeInfo oldCurrent = current;
+            if(parent != null)
+            {
+            current = parent;
+            }
+            oldCurrent.recycle();
+        }
+    }
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onAccessibilityEvent(AccessibilityEvent event) {
@@ -315,15 +367,53 @@ public class Able2IncludeService extends AccessibilityService {
 		{
 			eventText = result;
 		}
+		Log.i("EDSTAG","onAccessibilityEvent Log: [type] "+ getEventType(event) +  "[class]" + event.getClassName() +  "[text] " +getEventText(event));
+		Log.i("EDSTAG","NodeInfo Log: " +  nodeInfo);
+		Log.i("EDSTAG","onAccessibilityEvent )bject Log: " +  event);
+
  	    switch(eventType) {
         	case AccessibilityEvent.TYPE_VIEW_CLICKED:
         	{
+        		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_CLICKED", Toast.LENGTH_LONG).show();
+        		/*AccessibilityNodeInfo sourcetest = event.getSource();
+        		 AccessibilityNodeInfo rowNode = getListItemNodeInfo(sourcetest);
+        		 Log.i("EDSTAG","LOOP "+rowNode);
+                int child = rowNode.getChildCount();
+                // iterate through all child of parent view
+                for (int i=0; i<child; i++){
+                  AccessibilityNodeInfo childNodeView = sourcetest.getChild(i);
+                  Log.i("EDSTAG","LOOP "+childNodeView);
+                  // Do something with this window content
+                }*/
+                
+          		/*Log.i("EDSTAG","onAccessibilityEvent "+sourcetest.getClassName());
+           		Log.i("EDSTAG","WindowID "+sourcetest.getWindowId());
+           		Log.i("EDSTAG","onAccessibilityEvent "+sourcetest.getClass());
+           		Log.i("EDSTAG","onAccessibilityEvent "+sourcetest.getContentDescription());
+           		Log.i("EDSTAG","onAccessibilityEvent "+sourcetest.getWindow());*/
         	    if(mButtonOverlay != null)
         	    {
         	    	mButtonOverlay.setFocusText(eventText);
+        	    	AccessibilityNodeInfo source = event.getSource();
+        	    
+        	    	if (source != null ) {
+        	    		/*Toast.makeText(getApplicationContext(),"TYPE_VIEW_CLICKED", Toast.LENGTH_LONG).show();
+        	    	    Bundle arguments = new Bundle();
+        	    	    arguments.putCharSequence(AccessibilityNodeInfo
+        	    	            .ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "testing");
+        	    	    source.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);*/
+        	    		mButtonOverlay.setFocusInput(source);
+        	    	}
+        	    	else
+        	    	{
+        	      		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_CLICKED NO Obj", Toast.LENGTH_LONG).show();
+
+        	    		mButtonOverlay.setFocusInput(null);
+        	    	}
         	    }
         	}
         	break;
+
         	case AccessibilityEvent.TYPE_VIEW_LONG_CLICKED:
         	{
         		//do nothing for now
@@ -331,23 +421,119 @@ public class Able2IncludeService extends AccessibilityService {
         	break;
         	case AccessibilityEvent.TYPE_VIEW_FOCUSED:
         	{
+           		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_FOCUSED", Toast.LENGTH_LONG).show();
+ 	    		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_FOCUSED", Toast.LENGTH_LONG).show();
+
         	    if(mButtonOverlay != null)
         	    {
         	    	mButtonOverlay.setFocusText(eventText);
+        	    	AccessibilityNodeInfo source = event.getSource();
+        	    	if (source != null & event.getClassName().equals("android.widget.EditText")) {
+        	    		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_FOCUSED", Toast.LENGTH_LONG).show();
+        	    	   /* Bundle arguments = new Bundle();
+        	    	    arguments.putCharSequence(AccessibilityNodeInfo
+        	    	            .ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "android");
+        	    	    source.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);*/
+           	    		mButtonOverlay.setFocusInput(source);
+            	    }
+            	    else
+            	    {
+            	    	mButtonOverlay.setFocusInput(null);
+            	    }
         	    }  	
         	}
         	break;
         	case AccessibilityEvent.TYPE_VIEW_SELECTED:
         	{
+          		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_SELECTED", Toast.LENGTH_LONG).show();
+
         	    if(mButtonOverlay != null)
         	    {
         	    	mButtonOverlay.setFocusText(eventText);
+        	    	AccessibilityNodeInfo source = event.getSource();
+        	    	if (source != null & event.getClassName().equals("android.widget.EditText")) {
+        	    		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_SELECTED", Toast.LENGTH_LONG).show();
+        	    	   /* Bundle arguments = new Bundle();
+        	    	    arguments.putCharSequence(AccessibilityNodeInfo
+        	    	            .ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "android");
+        	    	    source.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);*/
+           	    		mButtonOverlay.setFocusInput(source);
+            	    }
+            	    else
+            	    {
+            	    	mButtonOverlay.setFocusInput(null);
+            	    }
         	    } 
         	}  		
         	break;
+
+        	case AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED:
+        	{
+          		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_TEXT_CHANGED", Toast.LENGTH_LONG).show();
+    	//messenger text
+        	    if(mButtonOverlay != null)
+        	    {
+        	    	mButtonOverlay.setFocusText(eventText,false);
+        	    	AccessibilityNodeInfo source = event.getSource();
+        	    	if (source != null & event.getClassName().equals("android.widget.EditText")) {
+        	    		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_TEXT_CHANGED", Toast.LENGTH_LONG).show();
+        	    	   /* Bundle arguments = new Bundle();
+        	    	    arguments.putCharSequence(AccessibilityNodeInfo
+        	    	            .ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "android");
+        	    	    source.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);*/
+           	    		mButtonOverlay.setFocusInput(source);
+            	    }
+            	    else
+            	    {
+            	    	mButtonOverlay.setFocusInput(null);
+            	    }
+        	    } 
+        	}
+        	break;		
         	case AccessibilityEvent.TYPE_VIEW_TEXT_SELECTION_CHANGED:
         	{
-        		//do nothing for now
+         		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_TEXT_SELECTION_CHANGED", Toast.LENGTH_LONG).show();
+ 	//messenger text
+        	    if(mButtonOverlay != null)
+        	    {
+        	    	mButtonOverlay.setFocusText(eventText,false);
+        	    	AccessibilityNodeInfo source = event.getSource();
+        	    	if (source != null & event.getClassName().equals("android.widget.EditText")) {
+        	    		//Toast.makeText(getApplicationContext(),"TYPE_VIEW_TEXT_SELECTION_CHANGED", Toast.LENGTH_LONG).show();
+        	    	   /* Bundle arguments = new Bundle();
+        	    	    arguments.putCharSequence(AccessibilityNodeInfo
+        	    	            .ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "android");
+        	    	    source.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);*/
+           	    		mButtonOverlay.setFocusInput(source);
+            	    }
+            	    else
+            	    {
+            	    	mButtonOverlay.setFocusInput(null);
+            	    }
+        	    } 
+        	}
+        	break;
+        	case AccessibilityEvent.TYPE_WINDOWS_CHANGED:
+        	{
+        		//Toast.makeText(getApplicationContext(),"TYPE_WINDOWS_CHANGED", Toast.LENGTH_LONG).show();
+    	
+        	    if(mButtonOverlay != null)
+        	    {
+        	    	mButtonOverlay.setFocusText(eventText,false);
+        	    	AccessibilityNodeInfo source = event.getSource();
+        	    	if (source != null & event.getClassName().equals("android.widget.EditText")) {
+        	    		//Toast.makeText(getApplicationContext(),"TYPE_WINDOWS_CHANGED", Toast.LENGTH_LONG).show();
+        	    	   /* Bundle arguments = new Bundle();
+        	    	    arguments.putCharSequence(AccessibilityNodeInfo
+        	    	            .ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "android");
+        	    	    source.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);*/
+           	    		mButtonOverlay.setFocusInput(source);
+            	    }
+            	    else
+            	    {
+            	    	mButtonOverlay.setFocusInput(null);
+            	    }
+        	    } 
         	}
         	break;
         	case AccessibilityEvent.TYPE_VIEW_HOVER_ENTER:

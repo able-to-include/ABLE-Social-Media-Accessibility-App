@@ -12,6 +12,43 @@ public final class R {
         public static final int anim_scale=0x7f040000;
     }
     public static final class array {
+        public static final int CategoryAnimalSubDefault=0x7f060019;
+        public static final int CategoryAnimalSubOptions=0x7f060017;
+        public static final int CategoryAnimalSubValues=0x7f060018;
+        public static final int CategoryClothesSubDefault=0x7f060022;
+        public static final int CategoryClothesSubOptions=0x7f060020;
+        public static final int CategoryClothesSubValues=0x7f060021;
+        public static final int CategoryConversationSubDefault=0x7f06000d;
+        public static final int CategoryConversationSubOptions=0x7f06000b;
+        public static final int CategoryConversationSubValues=0x7f06000c;
+        public static final int CategoryDimensionsSubDefault=0x7f060013;
+        public static final int CategoryDimensionsSubOptions=0x7f060011;
+        public static final int CategoryDimensionsSubValues=0x7f060012;
+        public static final int CategoryFeelingsSubDefault=0x7f060010;
+        public static final int CategoryFeelingsSubOptions=0x7f06000e;
+        public static final int CategoryFeelingsSubValues=0x7f06000f;
+        public static final int CategoryFoodSubDefault=0x7f060028;
+        public static final int CategoryFoodSubOptions=0x7f060026;
+        public static final int CategoryFoodSubValues=0x7f060027;
+        public static final int CategoryHobbySubDefault=0x7f06001c;
+        public static final int CategoryHobbySubOptions=0x7f06001a;
+        public static final int CategoryHobbySubValues=0x7f06001b;
+        public static final int CategoryNatureSubDefault=0x7f060025;
+        public static final int CategoryNatureSubOptions=0x7f060023;
+        public static final int CategoryNatureSubValues=0x7f060024;
+        public static final int CategoryPeopleSubDefault=0x7f060016;
+        public static final int CategoryPeopleSubOptions=0x7f060014;
+        public static final int CategoryPeopleSubValues=0x7f060015;
+        public static final int CategoryPlaceSubDefault=0x7f06001f;
+        public static final int CategoryPlaceSubOptions=0x7f06001d;
+        public static final int CategoryPlaceSubValues=0x7f06001e;
+        public static final int CategoryStuffSubDefault=0x7f06002b;
+        public static final int CategoryStuffSubOptions=0x7f060029;
+        public static final int CategoryStuffSubValues=0x7f06002a;
+        public static final int CategoryTransportSubDefault=0x7f06002e;
+        public static final int CategoryTransportSubOptions=0x7f06002c;
+        public static final int CategoryTransportSubValues=0x7f06002d;
+        public static final int empty_array=0x7f06000a;
         public static final int listOptions=0x7f060000;
         public static final int listValues=0x7f060001;
         public static final int pictoLangOptions=0x7f060002;
@@ -24,25 +61,16 @@ public final class R {
         public static final int textToSpeechValues=0x7f060007;
     }
     public static final class attr {
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int dividerWidth=0x7f010000;
     }
     public static final class color {
-        public static final int colorAccent=0x7f070004;
+        public static final int colorAccent=0x7f070005;
         public static final int colorPrimary=0x7f070000;
         public static final int colorPrimaryDark=0x7f070001;
-        public static final int colorPrimaryTrans=0x7f070002;
-        public static final int colorSecondary=0x7f070003;
-        public static final int tabsScrollColor=0x7f070005;
-        public static final int white=0x7f070006;
+        public static final int colorPrimaryTeal=0x7f070002;
+        public static final int colorPrimaryTrans=0x7f070003;
+        public static final int colorSecondary=0x7f070004;
+        public static final int tabsScrollColor=0x7f070006;
+        public static final int white=0x7f070007;
     }
     public static final class dimen {
         public static final int action_bar_title_size=0x7f080004;
@@ -71,27 +99,34 @@ containing a value of this type.
         public static final int flag=0x7f02000d;
         public static final int ic_action_edit=0x7f02000e;
         public static final int ic_action_picture=0x7f02000f;
-        public static final int ic_action_play=0x7f020010;
-        public static final int ic_launcher=0x7f020011;
-        public static final int logo=0x7f020012;
-        public static final int messenger_default=0x7f020013;
-        public static final int messenger_pressed=0x7f020014;
-        public static final int messenger_selected=0x7f020015;
-        public static final int roundtopcorner=0x7f020016;
-        public static final int safesurfing_default=0x7f020017;
-        public static final int safesurfing_pressed=0x7f020018;
-        public static final int safesurfing_selected=0x7f020019;
-        public static final int settings_default=0x7f02001a;
-        public static final int settings_pressed=0x7f02001b;
-        public static final int settings_selected=0x7f02001c;
-        public static final int stub=0x7f02001d;
-        public static final int transparent=0x7f02001e;
-        public static final int twitter_default=0x7f02001f;
-        public static final int twitter_pressed=0x7f020020;
-        public static final int twitter_selected=0x7f020021;
-        public static final int whatsapp_default=0x7f020022;
-        public static final int whatsapp_pressed=0x7f020023;
-        public static final int whatsapp_selected=0x7f020024;
+        public static final int ic_action_picture_edit=0x7f020010;
+        public static final int ic_action_play=0x7f020011;
+        public static final int ic_launcher=0x7f020012;
+        public static final int layoutborder=0x7f020013;
+        public static final int layoutborderhighlight=0x7f020014;
+        public static final int logo=0x7f020015;
+        public static final int messenger_default=0x7f020016;
+        public static final int messenger_pressed=0x7f020017;
+        public static final int messenger_selected=0x7f020018;
+        public static final int redx=0x7f020019;
+        public static final int roundtopcorner=0x7f02001a;
+        public static final int roundtopcornernew=0x7f02001b;
+        public static final int safesurfing_default=0x7f02001c;
+        public static final int safesurfing_pressed=0x7f02001d;
+        public static final int safesurfing_selected=0x7f02001e;
+        public static final int settings_default=0x7f02001f;
+        public static final int settings_pressed=0x7f020020;
+        public static final int settings_selected=0x7f020021;
+        public static final int speak=0x7f020022;
+        public static final int stub=0x7f020023;
+        public static final int textback=0x7f020024;
+        public static final int transparent=0x7f020025;
+        public static final int twitter_default=0x7f020026;
+        public static final int twitter_pressed=0x7f020027;
+        public static final int twitter_selected=0x7f020028;
+        public static final int whatsapp_default=0x7f020029;
+        public static final int whatsapp_pressed=0x7f02002a;
+        public static final int whatsapp_selected=0x7f02002b;
     }
     public static final class id {
         public static final int btn_facebook=0x7f0c0005;
@@ -100,6 +135,7 @@ containing a value of this type.
         public static final int btn_settings=0x7f0c000a;
         public static final int btn_twitter=0x7f0c0008;
         public static final int btn_whatsapp=0x7f0c0007;
+        public static final int buttonPictotoText=0x7f0c000f;
         public static final int buttonSimpleText=0x7f0c000b;
         public static final int buttonTextToPicto=0x7f0c000d;
         public static final int buttonTextToSpeech=0x7f0c000c;
@@ -107,22 +143,37 @@ containing a value of this type.
         public static final int footerflag=0x7f0c0004;
         public static final int footerlogo=0x7f0c0002;
         public static final int footertext=0x7f0c0003;
-        public static final int gridview=0x7f0c000e;
+        public static final int gridview=0x7f0c0012;
+        public static final int gridviewchild=0x7f0c0020;
+        public static final int gridviewparent=0x7f0c0022;
+        public static final int gridwordchild=0x7f0c001d;
         public static final int home_root=0x7f0c0001;
-        public static final int loadingPanel=0x7f0c0019;
-        public static final int picButtonOK=0x7f0c000f;
-        public static final int pictoImage=0x7f0c0011;
-        public static final int pictoSummary=0x7f0c0010;
-        public static final int pictoText=0x7f0c0012;
-        public static final int popupaction1=0x7f0c001a;
-        public static final int popupaction2=0x7f0c001b;
-        public static final int popupaction3=0x7f0c001c;
-        public static final int scrollView=0x7f0c0013;
-        public static final int scrollViewLand=0x7f0c0016;
-        public static final int simpleButtonOK=0x7f0c0015;
-        public static final int simpleButtonOKLand=0x7f0c0018;
-        public static final int textViewSimplifiedText=0x7f0c0014;
-        public static final int textViewSimplifiedTextLand=0x7f0c0017;
+        public static final int linearparencategory=0x7f0c0021;
+        public static final int linearviewbutton=0x7f0c0017;
+        public static final int linearviewcategory=0x7f0c001e;
+        public static final int linearviewframes=0x7f0c001a;
+        public static final int linearviewwords=0x7f0c001b;
+        public static final int loadingPanel=0x7f0c0029;
+        public static final int picButtonCancel=0x7f0c0019;
+        public static final int picButtonOK=0x7f0c0010;
+        public static final int picButtonSpeak=0x7f0c0018;
+        public static final int picButtonTxtOK=0x7f0c0016;
+        public static final int pictoImage=0x7f0c0013;
+        public static final int pictoImageHome=0x7f0c0015;
+        public static final int pictoSummary=0x7f0c0011;
+        public static final int pictoText=0x7f0c0014;
+        public static final int popupaction1=0x7f0c002a;
+        public static final int popupaction2=0x7f0c002b;
+        public static final int popupaction3=0x7f0c002c;
+        public static final int scrollView=0x7f0c0023;
+        public static final int scrollViewLand=0x7f0c0026;
+        public static final int simpleButtonOK=0x7f0c0025;
+        public static final int simpleButtonOKLand=0x7f0c0028;
+        public static final int textViewSimplifiedText=0x7f0c0024;
+        public static final int textViewSimplifiedTextLand=0x7f0c0027;
+        public static final int title_app=0x7f0c001c;
+        public static final int title_catapp=0x7f0c001f;
+        public static final int viewTextToPicto=0x7f0c000e;
     }
     public static final class layout {
         public static final int actionbar_layout=0x7f030000;
@@ -133,22 +184,88 @@ containing a value of this type.
         public static final int main_layout=0x7f030005;
         public static final int pictos_layout=0x7f030006;
         public static final int pictos_list_item=0x7f030007;
-        public static final int simple_list_item_1=0x7f030008;
-        public static final int simpletxt_layout=0x7f030009;
-        public static final int simpletxtland_layout=0x7f03000a;
-        public static final int spinner_layout=0x7f03000b;
+        public static final int pictototext_homelist_item=0x7f030008;
+        public static final int pictototext_layout=0x7f030009;
+        public static final int simple_list_item_1=0x7f03000a;
+        public static final int simpletxt_layout=0x7f03000b;
+        public static final int simpletxtland_layout=0x7f03000c;
+        public static final int spinner_layout=0x7f03000d;
     }
     public static final class menu {
         public static final int popup=0x7f0b0000;
     }
     public static final class string {
+        public static final int ActiveCategory=0x7f090045;
+        public static final int Category=0x7f090033;
+        public static final int CategoryAnimals=0x7f09003c;
+        public static final int CategoryClothes=0x7f09003f;
+        public static final int CategoryConversation=0x7f090038;
+        public static final int CategoryDimensions=0x7f09003a;
+        public static final int CategoryFeelingsAndBehavior=0x7f090039;
+        public static final int CategoryFood=0x7f090041;
+        public static final int CategoryHobbies=0x7f09003d;
+        public static final int CategoryNature=0x7f090040;
+        public static final int CategoryOFF=0x7f090036;
+        public static final int CategoryON=0x7f090035;
+        public static final int CategoryOnOff=0x7f090037;
+        public static final int CategoryPeople=0x7f09003b;
+        public static final int CategoryPlace=0x7f09003e;
+        public static final int CategorySelection=0x7f090034;
+        public static final int CategoryStuff=0x7f090042;
+        public static final int CategoryTransport=0x7f090043;
+        public static final int DefaultLangSPicto=0x7f09001e;
+        public static final int DefaultLangSText2Speech=0x7f090026;
+        public static final int DefaultLangSimpleText=0x7f090016;
+        public static final int EnableSubCategory=0x7f090046;
+        public static final int EngineMaxWordDefault=0x7f09002b;
+        public static final int EngineMaxWordSummary=0x7f090029;
+        public static final int EngineMaxWordTitle=0x7f09002a;
+        public static final int EngineSummary=0x7f090027;
+        public static final int EngineTimeoutDefault=0x7f09002e;
+        public static final int EngineTimeoutSummary=0x7f09002c;
+        public static final int EngineTimeoutTitle=0x7f09002d;
+        public static final int EngineTitle=0x7f090028;
+        public static final int LangPrefSummary=0x7f090014;
+        public static final int LangPrefTitle=0x7f090015;
+        public static final int PicotLangSummary=0x7f09001c;
+        public static final int PicotLangTitle=0x7f09001d;
+        public static final int PictoBaseDefault=0x7f09001b;
+        public static final int PictoBaseSelectSummary=0x7f090017;
+        public static final int PictoBaseSelectTitle=0x7f090018;
+        public static final int PictoBaseSummary=0x7f090019;
+        public static final int PictoBaseTitle=0x7f09001a;
+        public static final int SettingsString=0x7f090032;
+        public static final int SimpleTextSummary=0x7f090012;
+        public static final int SimpleTextTitle=0x7f090013;
+        public static final int SubCategory=0x7f090044;
+        public static final int Text2SpeechDefault=0x7f090023;
+        public static final int Text2SpeechSelectSummary=0x7f09001f;
+        public static final int Text2SpeechSelectTitle=0x7f090020;
+        public static final int Text2SpeechSettingSummary=0x7f090021;
+        public static final int Text2SpeechSettingTitle=0x7f090022;
+        public static final int Text2SpeechSummary=0x7f090024;
+        public static final int Text2SpeechTitle=0x7f090025;
+        public static final int TxtToSpeechSelectCategory=0x7f090030;
+        public static final int TxtToSpeechSelectParent=0x7f09002f;
+        public static final int TxtToSpeechSelectWord=0x7f090031;
+        public static final int ableConnect=0x7f09000c;
+        public static final int ableErrorSimplify=0x7f09000d;
+        public static final int ableServiceCreated=0x7f09000a;
+        public static final int ableServiceNotRunning=0x7f090009;
+        public static final int ableServiceStopped=0x7f09000b;
         public static final int accessibility_service_description=0x7f090000;
-        public static final int action_settings=0x7f090003;
+        public static final int action_settings=0x7f090002;
         public static final int app_name=0x7f090001;
-        public static final int hello=0x7f090004;
-        public static final int hello_world=0x7f090002;
-        public static final int test_service_off=0x7f090006;
-        public static final int test_service_on=0x7f090005;
+        public static final int errorFaceBook=0x7f090005;
+        public static final int errorMessenger=0x7f090006;
+        public static final int errorNoText=0x7f09000e;
+        public static final int errorPictos=0x7f090010;
+        public static final int errorTwitter=0x7f090008;
+        public static final int errorTxtToPicto=0x7f090011;
+        public static final int errorTxtToSpeech=0x7f09000f;
+        public static final int errorWhatsApp=0x7f090007;
+        public static final int test_service_off=0x7f090004;
+        public static final int test_service_on=0x7f090003;
     }
     public static final class style {
         public static final int ActionBarCompat=0x7f0a0001;
@@ -158,62 +275,8 @@ containing a value of this type.
         public static final int TwoWayView=0x7f0a0004;
     }
     public static final class xml {
-        public static final int prefs=0x7f050000;
-        public static final int serviceconfig=0x7f050001;
+        public static final int prefbk=0x7f050000;
+        public static final int prefs=0x7f050001;
+        public static final int serviceconfig=0x7f050002;
     }
-    public static final class styleable {
-        /**  Defines the custom XML attributes supported for a HorizontalListView 
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #HorizontalListView_android_divider android:divider}</code></td><td></td></tr>
-           <tr><td><code>{@link #HorizontalListView_android_fadingEdgeLength android:fadingEdgeLength}</code></td><td></td></tr>
-           <tr><td><code>{@link #HorizontalListView_android_requiresFadingEdge android:requiresFadingEdge}</code></td><td></td></tr>
-           <tr><td><code>{@link #HorizontalListView_dividerWidth com.services.able2includeapp:dividerWidth}</code></td><td></td></tr>
-           </table>
-           @see #HorizontalListView_android_divider
-           @see #HorizontalListView_android_fadingEdgeLength
-           @see #HorizontalListView_android_requiresFadingEdge
-           @see #HorizontalListView_dividerWidth
-         */
-        public static final int[] HorizontalListView = {
-            0x010100e0, 0x01010129, 0x010103a5, 0x7f010000
-        };
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#divider}
-          attribute's value can be found in the {@link #HorizontalListView} array.
-          @attr name android:divider
-        */
-        public static final int HorizontalListView_android_divider = 1;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#fadingEdgeLength}
-          attribute's value can be found in the {@link #HorizontalListView} array.
-          @attr name android:fadingEdgeLength
-        */
-        public static final int HorizontalListView_android_fadingEdgeLength = 0;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#requiresFadingEdge}
-          attribute's value can be found in the {@link #HorizontalListView} array.
-          @attr name android:requiresFadingEdge
-        */
-        public static final int HorizontalListView_android_requiresFadingEdge = 2;
-        /**
-          <p>This symbol is the offset where the {@link com.services.able2includeapp.R.attr#dividerWidth}
-          attribute's value can be found in the {@link #HorizontalListView} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.services.able2includeapp:dividerWidth
-        */
-        public static final int HorizontalListView_dividerWidth = 3;
-    };
 }

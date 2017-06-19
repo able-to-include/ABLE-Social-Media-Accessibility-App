@@ -36,6 +36,7 @@ import java.util.concurrent.Executors;
 
 
 
+
 import com.services.able2includeapp.R;
 
 import android.os.Handler;
@@ -43,12 +44,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class ImageLoader {
     
 	// Initialize MemoryCache
     MemoryCache memoryCache = new MemoryCache();
-    
+    Context mctx;
     FileCache fileCache;
     
     //Create Map (collection) to store image and image url in key value pair
@@ -61,7 +63,7 @@ public class ImageLoader {
     public ImageLoader(Context context){
     	
         fileCache = new FileCache(context);
-        
+        mctx = context;
         // Creates a thread pool that reuses a fixed number of 
         // threads operating off a shared unbounded queue.
         executorService=Executors.newFixedThreadPool(5);
@@ -88,7 +90,8 @@ public class ImageLoader {
         {
         	//queue Photo to download from url
             queuePhoto(url, imageView);
-            
+	  //   Toast.makeText(mctx,url, Toast.LENGTH_SHORT).show();
+          
             //Before downloading image show default image 
            imageView.setImageResource(stub_id);
            if (url.startsWith("http://")== false ) {

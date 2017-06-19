@@ -1,23 +1,5 @@
 package com.smart.network;
-/*
-<license>
-	<name> Apache License, Version 2.0 </name>
-	<url> http://www.apache.org/licenses/LICENSE-2.0 </url>
-	<comments> 
-		The work represented by this file is partially funded by the ABLE-TO-INCLUDE project through the 
-		European Commission's ICT Policy Support Programme as part of the Competitiveness & Innovation 
-		Programme (Grant no.: 621055)
-		Copyright © 2016, ABLE-TO-INCLUDE Consortium.
-		Licensed under the Apache License, Version 2.0 (the "License");
-		you may not use this file except in compliance with the License.
-		You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-		Unless required by applicable law or agreed to in writing, software distributed under the License 
-		is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
-		implied.
-		See the License for the specific language governing permissions & limitations under the License.
-	</comments>
-</license>
-*/
+
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -31,7 +13,10 @@ import org.json.JSONObject;
 
 
 
+
+
 import android.util.Log;
+
 
 public class JsonResponseHelper {
 	
@@ -80,7 +65,19 @@ public class JsonResponseHelper {
 		String textSimplified = null;
 		try {
 		      JSONObject objectABLE = new JSONObject(mJsonResult);
+		      Log.i("EDSTAG", ">>> JSON RESULT <<< " +  mJsonResult);
+		      Log.i("EDSTAG", ">>> JSON RESULT <<< " +  objectABLE);
+		     //JSONObject respDetails = objectABLE.getJSONObject("textSimplified"); 
+		     // textSimplified = respDetails.getString("simplifiedText");
 		      textSimplified = objectABLE.getString("textSimplified");
+		      Log.i("EDSTAG", ">>> textSimplified <<< " +  textSimplified);
+		      /*String[] tokens = textSimplified.split(",", -1);
+		      
+		      tokens = tokens[1].split(":", -1);
+		    //  tokens = tokens[1].split(".", -1);
+		      textSimplified = tokens[1].substring(1);
+		      textSimplified = textSimplified.substring(0, textSimplified.length() - 4);*/
+		      Log.i("EDSTAG", ">>> textSimplified <<< " +  "End");
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -88,6 +85,20 @@ public class JsonResponseHelper {
 			e.printStackTrace();
 		}
 		return  textSimplified;
+	}
+	public String GetTextFromPicto(){
+		String textPicto = null;
+		try {
+		      JSONObject objectABLE = new JSONObject(mJsonResult);
+		      Log.i("EDSTAG", ">>> JSON RESULT <<< " +  mJsonResult);
+		      textPicto = objectABLE.getString("textFromPictos");
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		return  textPicto;
 	}
 	public String trimEnd( String myString ) {
 
@@ -101,22 +112,26 @@ public class JsonResponseHelper {
 	    }
 	    return myString;
 	}
+
+	/* Version 3 GetPictos
 	public boolean GetPictos( ArrayList<String> pictoArray,ArrayList<String> request){
 		boolean bret = false;
 		try {
 		      JSONObject objectABLE = new JSONObject(mJsonResult);
- 		      JSONArray pictos = objectABLE.getJSONArray("pictos");
+          	Log.i("EDSTAG", ">>> JSON RESULT <<< " +  mJsonResult);
+        	
+		      JSONArray pictos = objectABLE.getJSONArray("pictos");
 
 		     for(int i = 0; i < pictos.length(); i++) {
 		            String pictoURL = pictos.getString(i);
 		            pictoURL = trimEnd(pictoURL);
 		            if(i < request.size())
 		            {
-		            	//Log.i("EDSTAG", ">>> Request <<<" + request.get(i) + "<<< Response >>>" + pictoURL );
+		            	Log.i("EDSTAG", ">>> Request <<<" + request.get(i) + "<<< Response >>>" + pictoURL );
 		            }
 		            else
 		            {
-		            	//Log.i("EDSTAG", "<<< Response >>>" + pictoURL);
+		            	Log.i("EDSTAG", "<<< Response >>>" + pictoURL);
 	            	
 		            }
 		            if((pictoURL.length() > 0) )
@@ -136,6 +151,70 @@ public class JsonResponseHelper {
 		}
 		return  bret;
 	}
+	*/
+	/*
+	 *   List<Note> notes;
+    JSONArray notesJSON = response.getJSONArray("notes");
+    notes = new ArrayList<Note>(notesJSON.length());
+    for (int i = 0; i < notesJSON.length(); i++) {
+        Note n = new Note(notesJSON.getJSONObject(i));
+        notes.add(n);
+    }
+
+	 */
+	public boolean GetPictos( ArrayList<PictoResponse> pictoArray){
+		boolean bret = false;
+		try {
+		      JSONObject objectABLE = new JSONObject(mJsonResult);
+          	Log.i("EDSTAG", ">>> JSON RESULT <<< " +  mJsonResult);
+         	Log.i("EDSTAG", ">>> 1 <<< " );
+
+		    //  JSONArray pictoJSON = objectABLE.getJSONArray("output");
+         	JSONArray pictoJSON = objectABLE.getJSONArray("pictos");
+		      Log.i("EDSTAG", ">>> 2 <<< " );
+		     for(int i = 0; i < pictoJSON.length(); i++) {
+		    	 Log.i("EDSTAG", ">>> 3 <<<  i " + i);
+		    	 try {
+		    	 		PictoResponse pic = new PictoResponse(pictoJSON.getJSONArray(i));
+		    	 		Log.i("EDSTAG", ">>> 4 <<< " );
+		    	 		pictoArray.add(pic);
+		    	 }
+		    	 catch(Exception e)
+		    	 {
+		    		 Log.i("EDSTAG", ">>> Error <<< " + e.getMessage());
+		    	 }
+		    	 
+
+		            /*String pictoURL = pictos.getString(i);
+		            pictoURL = trimEnd(pictoURL);
+		            if(i < request.size())
+		            {
+		            	Log.i("EDSTAG", ">>> Request <<<" + request.get(i) + "<<< Response >>>" + pictoURL );
+		            }
+		            else
+		            {
+		            	Log.i("EDSTAG", "<<< Response >>>" + pictoURL);
+	            	
+		            }
+		            if((pictoURL.length() > 0) )
+   	       		 	{
+		            	if(pictoURL.charAt(0) != '\n')
+		            	{
+   	       		 			pictoArray.add(pictoURL);
+		            	}
+   	       		 	}*/
+		     }
+		     bret = true;
+
+		} catch ( Exception e) {
+			// TODO Auto-generated catch block
+		      Log.i("EDSTAG", ">>> Error <<< " + e.getMessage());
+
+			e.printStackTrace();
+		}
+		return  bret;
+	}
+
     /**
      * Returns the error description associated with the given error code.
      *
@@ -175,6 +254,9 @@ public class JsonResponseHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+      	//Toast.makeText(applicationContext,description, Toast.LENGTH_LONG).show();
+        
         return description;
     }
 

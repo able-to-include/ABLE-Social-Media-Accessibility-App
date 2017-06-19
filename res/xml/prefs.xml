@@ -1,64 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
  <PreferenceCategory
-   android:summary="Select the SimpleText lanuage"
-   android:title="SimpleText Language Settings" >
+   android:summary="@string/SimpleTextSummary"
+   android:title="@string/SimpleTextTitle" 
+  >
     <ListPreference
      android:entries="@array/simpleTextOptions"
      android:entryValues="@array/simpleTextValues"
      android:key="listsimpleTextLang"
-     android:summary="Language Perference"
-     android:title="SimpleText Language" 
-     android:defaultValue="English"/>
+     android:summary="@string/LangPrefSummary"
+     android:title="@string/LangPrefTitle" 
+     android:defaultValue="@string/DefaultLangSimpleText"/>
  </PreferenceCategory>   
  <PreferenceCategory
-   android:summary="Select the Pictogram base"
-   android:title="Pictogram Settings" >
+   android:summary="@string/PictoBaseSelectSummary"
+   android:title="@string/PictoBaseSelectTitle" >
   <ListPreference
      android:entries="@array/listOptions"
      android:entryValues="@array/listValues"
      android:key="listpref"
-     android:summary="Pictogram Base"
-     android:title="Pictogram"
-     android:defaultValue="Beta" />
+     android:summary="@string/PictoBaseSummary"
+     android:title="@string/PictoBaseTitle"
+     android:defaultValue="@string/PictoBaseDefault" />
     <ListPreference
      android:entries="@array/pictoLangOptions"
      android:entryValues="@array/pictoLangValues"
      android:key="listpictoLang"
-     android:summary="Pictogram language perference"
-     android:title="Language"
-     android:defaultValue="English" />
+     android:summary="@string/PicotLangSummary"
+     android:title="@string/PicotLangTitle"
+     android:defaultValue="@string/DefaultLangSPicto" />
+     <PreferenceScreen
+        android:key="Category"
+        android:title="@string/ActiveCategory"
+        android:persistent="true">
+             <PreferenceScreen
+        			android:key="CategoryConversation"
+        			android:title="@string/CategoryConversation"
+        			android:persistent="true"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryConversation"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxConversation" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryConversation"
+     							android:entries="@array/CategoryConversationSubOptions"
+    						 	android:entryValues="@array/CategoryConversationSubValues"
+     							android:key="multiselectlistCategoryConversation"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryConversationSubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryFeelingsAndBehavior"
+        			android:title="@string/CategoryFeelingsAndBehavior"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryFeelingsAndBehavior"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxFeelingsAndBehavior" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryFeelingsAndBehavior"
+     							android:entries="@array/CategoryFeelingsSubOptions"
+    						 	android:entryValues="@array/CategoryFeelingsSubValues"
+     							android:key="multiselectlistCategoryFeelings"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryFeelingsSubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryDimensions"
+        			android:title="@string/CategoryDimensions"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryDimensions"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxDimensions" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryDimensions"
+     							android:entries="@array/CategoryDimensionsSubOptions"
+    						 	android:entryValues="@array/CategoryDimensionsSubValues"
+     							android:key="multiselectlistCategoryDimensions"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryDimensionsSubDefault" />
+    		</PreferenceScreen>
+              <PreferenceScreen
+        			android:key="CategoryPeople"
+        			android:title="@string/CategoryPeople"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryPeople"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxPeople" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryPeople"
+     							android:entries="@array/CategoryPeopleSubOptions"
+    						 	android:entryValues="@array/CategoryPeopleSubValues"
+     							android:key="multiselectlistCategoryPeople"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryPeopleSubDefault" />
+    		</PreferenceScreen>
+              <PreferenceScreen
+        			android:key="CategoryAnimals"
+        			android:title="@string/CategoryAnimals"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryAnimals"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxAnimals" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryAnimals"
+     							android:entries="@array/CategoryAnimalSubOptions"
+    						 	android:entryValues="@array/CategoryAnimalSubValues"
+     							android:key="multiselectlistCategoryAnimals"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryAnimalSubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryHobbies"
+        			android:title="@string/CategoryHobbies"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryHobbies"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxHobbies" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryHobbies"
+     							android:entries="@array/CategoryHobbySubOptions"
+    						 	android:entryValues="@array/CategoryHobbySubValues"
+     							android:key="multiselectlistCategoryHobby"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryHobbySubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryPlace"
+        			android:title="@string/CategoryPlace"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryPlace"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxPlace" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryPlace"
+     							android:entries="@array/CategoryPlaceSubOptions"
+    						 	android:entryValues="@array/CategoryPlaceSubValues"
+     							android:key="multiselectlistCategoryPlace"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryPlaceSubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryClothes"
+        			android:title="@string/CategoryClothes"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryClothes"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxClothes" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryClothes"
+     							android:entries="@array/CategoryClothesSubOptions"
+    						 	android:entryValues="@array/CategoryClothesSubValues"
+     							android:key="multiselectlistCategoryClothes"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryClothesSubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryNature"
+        			android:title="@string/CategoryNature"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryNature"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxNature" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryNature"
+     							android:entries="@array/CategoryNatureSubOptions"
+    						 	android:entryValues="@array/CategoryNatureSubValues"
+     							android:key="multiselectlistCategoryNature"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryNatureSubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryFood"
+        			android:title="@string/CategoryFood"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryFood"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxFood" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryFood"
+     							android:entries="@array/CategoryFoodSubOptions"
+    						 	android:entryValues="@array/CategoryFoodSubValues"
+     							android:key="multiselectlistCategoryFood"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryFoodSubDefault" />
+    		</PreferenceScreen>
+              <PreferenceScreen
+        			android:key="CategoryStuff"
+        			android:title="@string/CategoryStuff"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryStuff"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxStuff" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryStuff"
+     							android:entries="@array/CategoryStuffSubOptions"
+    						 	android:entryValues="@array/CategoryStuffSubValues"
+     							android:key="multiselectlistCategoryStuff"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryStuffSubDefault" />
+    		</PreferenceScreen>
+             <PreferenceScreen
+        			android:key="CategoryTransport"
+        			android:title="@string/CategoryTransport"
+        			android:persistent="false"
+         			android:summary="">
+        				<SwitchPreference 
+        				    	android:title="@string/CategoryTransport"
+								android:defaultValue="true" 	
+								android:summary="@string/CategoryOnOff"
+								android:key="checkboxTransport" />
+
+            			<MultiSelectListPreference
+                				android:dialogTitle="@string/CategoryTransport"
+     							android:entries="@array/CategoryTransportSubOptions"
+    						 	android:entryValues="@array/CategoryTransportSubValues"
+     							android:key="multiselectlistCategoryTransport"
+     							android:summary="@string/EnableSubCategory"
+     							android:title="@string/SubCategory"
+      							android:defaultValue="@array/CategoryTransportSubDefault" />
+    		</PreferenceScreen>
+       </PreferenceScreen>
  </PreferenceCategory>
  <PreferenceCategory
-   android:summary="Select the Text2Speech Engine"
-   android:title="Text2Speech Settings" >
+   android:summary="@string/Text2SpeechSelectSummary"
+   android:title="@string/Text2SpeechSelectTitle" >
       <ListPreference
      android:entries="@array/textToSpeechEngineOptions"
      android:entryValues="@array/textToSpeechEngineValues"
      android:key="listextToSpeechEngine"
-     android:summary="Text2Speech Engine Selection"
-     android:title="Engine Selection" 
-     android:defaultValue="Local" 
+     android:summary="@string/Text2SpeechSettingSummary"
+     android:title="@string/Text2SpeechSettingTitle" 
+     android:defaultValue="@string/Text2SpeechDefault" 
     />
   <ListPreference
      android:entries="@array/textToSpeechOptions"
      android:entryValues="@array/textToSpeechValues"
      android:key="listextToSpeechLang"
-     android:summary="Language Perference"
-     android:title="Text2Speech Language"
-     android:defaultValue="English" 
+     android:summary="@string/Text2SpeechSummary"
+     android:title="@string/Text2SpeechTitle"
+     android:defaultValue="@string/DefaultLangSText2Speech" 
     />
  </PreferenceCategory>
    <PreferenceCategory
-   android:summary="Defines the maximum block of text"
-   android:title="Configure the Max Word Count" >
+   android:summary="@string/EngineSummary"
+   android:title="@string/EngineTitle" >
  	<EditTextPreference 
- 	 android:summary="Max amount of selectable words sent to services."
-     android:title="Maximum Word Count" 
+ 	 android:summary="@string/EngineMaxWordSummary"
+     android:title="@string/EngineMaxWordTitle" 
      android:key="maxWordCount"
-     android:defaultValue="10"
+     android:defaultValue="@string/EngineMaxWordDefault"
      android:inputType="number" 
  	    />
-
+ 	<EditTextPreference 
+ 	 android:summary="@string/EngineTimeoutSummary"
+     android:title="@string/EngineTimeoutTitle" 
+     android:key="maxWordTime"
+     android:defaultValue="@string/EngineTimeoutDefault"
+     android:inputType="number" 
+ 	    />
   </PreferenceCategory>   
 </PreferenceScreen>

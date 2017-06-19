@@ -55,5 +55,23 @@
                 android:background="@drawable/roundtopcorner"
                 
             /> 
-
+              <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimaryTeal"
+        android:id="@+id/viewTextToPicto"  />          
+            <ImageButton
+                android:id="@+id/buttonPictotoText" 
+                android:scaleType="centerInside"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_action_picture_edit"
+                android:padding="2dip"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/roundtopcornernew"
+                
+            /> 
 </LinearLayout>

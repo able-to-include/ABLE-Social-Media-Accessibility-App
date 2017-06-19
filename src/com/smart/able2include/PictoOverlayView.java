@@ -21,9 +21,13 @@ package com.smart.able2include;
 import java.util.ArrayList;
 
 import com.services.able2includeapp.R;
+import com.smart.network.PictoResponse;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +40,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class PictoOverlayView extends View{
+public class PictoOverlayView extends View implements OnInitListener{
 	private Context mServiceContext;
 	private WindowManager wm;
     private boolean mOnTop = false;
@@ -46,22 +50,29 @@ public class PictoOverlayView extends View{
     private GridView mGridview;
     private AsyncTaskLoadImages myAsyncTaskLoadImages;
     @SuppressWarnings("deprecation")
-    private ArrayList<String> mPictoArray;
+    private ArrayList<PictoResponse> mPictoArray;
     private ArrayList<String> mPictoReq;
     private Object mSyncToken = new Object(); 
     public OverlayClick delegate = null;//Call back interface
-    
+    private TextToSpeech mInternalTTS;
+    private String sentence;
 	ImageAdapter myImageAdapter;
-	public PictoOverlayView(OverlayClick click,Context context,WindowManager mng,int Orientation,ArrayList<String> pictoReq,ArrayList<String> pictoArray) {
+	public PictoOverlayView(OverlayClick click,Context context,WindowManager mng,int Orientation,ArrayList<PictoResponse> pictoArray,ArrayList<String> pictoReq) {
 		super(context);
 		mServiceContext = context;
 		mPictoArray = pictoArray;
 		mPictoReq = pictoReq;
 		wm = mng;
 		delegate = click;
+		  this.mInternalTTS = new TextToSpeech(this.mServiceContext, null);
 		myImageAdapter = new ImageAdapter(mServiceContext);
 		createView();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void onInit(int status) {
+		// TODO Auto-generated method stub
+		
 	}
     /**
      * Creates head view and adds it to the window manager.
@@ -86,17 +97,25 @@ public class PictoOverlayView extends View{
 		{
 			layoutInflater.inflate(R.layout.pictos_layout, frameLayout);
 			StringBuilder str = new StringBuilder();
-			PictoListAdapter adapter = new PictoListAdapter(mServiceContext, R.layout.pictos_list_item, mPictoArray,mPictoReq);
+			PictoListAdapter adapter = new PictoListAdapter(mServiceContext, R.layout.pictos_list_item, mPictoArray);
 			mGridview = (GridView) frameLayout.findViewById(R.id.gridview);
-			mGridview.setAdapter(adapter);
 			mGridview.setOnItemClickListener(myOnItemClickListener);
+			mGridview.setAdapter(adapter);
 			TextView txt = (TextView) frameLayout.findViewById(R.id.pictoSummary);
 			for(int i = 0; i < mPictoReq.size();i++)
 			{
 				str.append(mPictoReq.get(i));
 				str.append(" ");
 			}
-			txt.setText(str.toString());
+			sentence = str.toString();
+			txt.setText(sentence);
+			txt.setOnClickListener(new OnClickListener(){
+	 			@Override
+	 			public void onClick(View v) {
+	 			    
+	 				mInternalTTS.speak(sentence, TextToSpeech.QUEUE_FLUSH, null);
+	  				}	
+			});
 			dialogButton = (Button) frameLayout.findViewById(R.id.picButtonOK);
 			dialogButton.setOnClickListener(new OnClickListener() {
  			@Override
@@ -121,6 +140,8 @@ public class PictoOverlayView extends View{
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
+			Log.i("EDSTAG", ">>> OnItemClickListener <<< " );
+			//Toast.makeText(mServiceContext,"Hello", Toast.LENGTH_LONG).show();
 
 		}
 	};
@@ -156,3 +177,123 @@ public class PictoOverlayView extends View{
 		setOrientation(mLastOrientation);
 	}
 }
+/*
+public class PictoOverlayView extends View{
+private Context mServiceContext;
+private WindowManager wm;
+private boolean mOnTop = false;
+private int mLastOrientation = 0;
+private RelativeLayout frameLayout;
+private Button dialogButton;
+private GridView mGridview;
+private AsyncTaskLoadImages myAsyncTaskLoadImages;
+@SuppressWarnings("deprecation")
+private ArrayList<String> mPictoArray;
+private ArrayList<String> mPictoReq;
+private Object mSyncToken = new Object(); 
+public OverlayClick delegate = null;//Call back interface
+
+ImageAdapter myImageAdapter;
+public PictoOverlayView(OverlayClick click,Context context,WindowManager mng,int Orientation,ArrayList<String> pictoReq,ArrayList<String> pictoArray) {
+	super(context);
+	mServiceContext = context;
+	mPictoArray = pictoArray;
+	mPictoReq = pictoReq;
+	wm = mng;
+	delegate = click;
+	myImageAdapter = new ImageAdapter(mServiceContext);
+	createView();
+	// TODO Auto-generated constructor stub
+}
+
+
+private void createView() {
+	WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
+	WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.TYPE_SYSTEM_ALERT, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+					| WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL, PixelFormat.TRANSLUCENT);
+	
+	params.gravity =  Gravity.START | Gravity.TOP;
+	params.x =0;
+	params.y = 30;
+	params.width = wm.getDefaultDisplay().getWidth();
+	params.height  = wm.getDefaultDisplay().getHeight()-30;
+     
+	frameLayout = new RelativeLayout(mServiceContext);
+
+	LayoutInflater layoutInflater = (LayoutInflater) mServiceContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    // Here is the place where you can inject whatever layout you want.
+	try
+	{
+		layoutInflater.inflate(R.layout.pictos_layout, frameLayout);
+		StringBuilder str = new StringBuilder();
+		PictoListAdapter adapter = new PictoListAdapter(mServiceContext, R.layout.pictos_list_item, mPictoArray,mPictoReq);
+		mGridview = (GridView) frameLayout.findViewById(R.id.gridview);
+		mGridview.setAdapter(adapter);
+		mGridview.setOnItemClickListener(myOnItemClickListener);
+		TextView txt = (TextView) frameLayout.findViewById(R.id.pictoSummary);
+		for(int i = 0; i < mPictoReq.size();i++)
+		{
+			str.append(mPictoReq.get(i));
+			str.append(" ");
+		}
+		txt.setText(str.toString());
+		dialogButton = (Button) frameLayout.findViewById(R.id.picButtonOK);
+		dialogButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				RemoveOvelay();
+				delegate.onClick();
+				}
+		});
+		synchronized(mSyncToken)
+		{
+			wm.addView(frameLayout, params);
+			mOnTop = true;
+		}
+	}
+	catch (Exception e)
+	{
+		Toast.makeText(mServiceContext,e.getMessage(), Toast.LENGTH_LONG).show();
+	}
+}
+OnItemClickListener myOnItemClickListener = new OnItemClickListener() {
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+
+	}
+};
+
+public void RemoveOvelay()
+{
+	synchronized(mSyncToken)
+	{
+		if(mOnTop == true)
+		{
+			wm.removeView(frameLayout);
+			mOnTop = false;
+		}
+	}
+}
+
+public void setOrientation(int Orientation)
+{
+	boolean onTop = false;
+	synchronized(mSyncToken)
+	{
+		onTop =mOnTop;
+	}
+	if(onTop == true)
+	{
+		RemoveOvelay();
+		createView();
+	}
+	mLastOrientation = Orientation;
+}
+public void CreateOverlay()
+{
+	setOrientation(mLastOrientation);
+}
+}
+*/

@@ -44,4 +44,308 @@
      <item>Local</item>
      <item>eSpeak</item>
    </string-array>
+     <string-array name="empty_array">
+    </string-array>
+    <string-array name="CategoryConversationSubOptions">
+        <item>Greetings and farewells</item>
+        <item>General</item>
+        <item>Opinion</item>
+        <item>Communicate</item>
+        <item>Letters</item>
+        <item>Punctuation</item>
+    </string-array>
+     <string-array name="CategoryConversationSubValues">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="CategoryConversationSubDefault">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="CategoryFeelingsSubOptions">
+        <item>Positive thoughts</item>
+        <item>Negative thoughts</item>
+        <item>Color</item>
+        <item>Feature</item>
+        <item>Senses</item>
+        <item>Love</item>
+        <item>Sexuality</item>
+        <item>Religion</item>
+        <item>Behavior</item>
+        <item>Feast</item>
+        <item>Medical problems</item>
+        <item>Disasters and accidents</item>
+    </string-array>
+     <string-array name="CategoryFeelingsSubValues">
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="CategoryFeelingsSubDefault">
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+    </string-array>
+    <string-array name="CategoryDimensionsSubOptions">
+        <item>Weekdays, months and seasons</item>
+        <item>Time and clock</item>
+        <item>Figures</item>
+        <item>Location</item>
+    </string-array>
+     <string-array name="CategoryDimensionsSubValues">
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+    </string-array>
+    <string-array name="CategoryDimensionsSubDefault">
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+    </string-array>
+    <string-array name="CategoryPeopleSubOptions">
+        <item>Pronouns</item>
+        <item>Family and friends</item>
+        <item>Children and babies</item>
+        <item>Professions</item>
+        <item>Familiar characters and fantasy</item>
+        <item>Body</item>
+    </string-array>
+     <string-array name="CategoryPeopleSubValues">
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+    </string-array>
+    <string-array name="CategoryPeopleSubDefault">
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+    </string-array>
+    <string-array name="CategoryAnimalSubOptions">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Rodents</item>
+        <item>Birds</item>
+        <item>Aquatic Animals</item>
+        <item>Farm Animals</item>
+        <item>Insects</item>
+        <item>Wild Animals</item>
+    </string-array>
+     <string-array name="CategoryAnimalSubValues">
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+    </string-array>
+    <string-array name="CategoryAnimalSubDefault">
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+    </string-array>
+   <string-array name="CategoryHobbySubOptions">
+        <item>Ball Sports</item>
+        <item>Gymnastics and athletics</item>
+        <item>Watersports</item>
+        <item>Music</item>
+        <item>Creative</item>
+        <item>Leisure</item>
+    </string-array>
+     <string-array name="CategoryHobbySubValues">
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+    </string-array>
+    <string-array name="CategoryHobbySubDefault">
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+    </string-array>
+  <string-array name="CategoryPlaceSubOptions">
+        <item>School</item>
+        <item>Day care</item>
+        <item>Village and city</item>
+        <item>Shops</item>
+        <item>Living Area</item>
+        <item>Kitchen</item>
+        <item>Bathroom</item>
+        <item>Bedroom</item>
+        <item>Garden</item>        
+    </string-array>
+     <string-array name="CategoryPlaceSubValues">
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>  
+    </string-array>
+    <string-array name="CategoryPlaceSubDefault">
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item> 
+    </string-array>
+  <string-array name="CategoryClothesSubOptions">
+        <item>Clothes</item>
+        <item>Underwear</item>
+        <item>Footwear</item>
+        <item>Swimwear</item>
+        <item>Accessories</item>    
+    </string-array>
+     <string-array name="CategoryClothesSubValues">
+        <item>60</item>
+        <item>61</item>
+        <item>62</item>
+        <item>63</item>
+        <item>64</item> 
+    </string-array>
+    <string-array name="CategoryClothesSubDefault">
+        <item>60</item>
+        <item>61</item>
+        <item>62</item>
+        <item>63</item>
+        <item>64</item> 
+    </string-array>
+     <string-array name="CategoryNatureSubOptions">
+        <item>Weather</item>
+        <item>Flowers and plants</item>
+        <item>Landscape</item> 
+    </string-array>
+     <string-array name="CategoryNatureSubValues">
+        <item>66</item>
+        <item>67</item>
+        <item>68</item>
+    </string-array>
+    <string-array name="CategoryNatureSubDefault">
+        <item>66</item>
+        <item>67</item>
+        <item>68</item>
+    </string-array>
+    <string-array name="CategoryFoodSubOptions">
+        <item>Drink</item>
+        <item>Vegetables</item>
+        <item>Fruit</item> 
+        <item>Meat and fish</item>
+        <item>Breakfast</item>
+        <item>Snacks</item> 
+        <item>Hot meal</item>
+        <item>Cooking and baking</item> 
+    </string-array>
+     <string-array name="CategoryFoodSubValues">
+        <item>70</item>
+        <item>71</item>
+        <item>72</item> 
+        <item>73</item>
+        <item>74</item>
+        <item>75</item> 
+        <item>76</item>
+        <item>77</item> 
+    </string-array>
+    <string-array name="CategoryFoodSubDefault">
+        <item>70</item>
+        <item>71</item>
+        <item>72</item> 
+        <item>73</item>
+        <item>74</item>
+        <item>75</item> 
+        <item>76</item>
+        <item>77</item> 
+    </string-array>
+     <string-array name="CategoryStuffSubOptions">
+        <item>Technology</item>
+        <item>School Material</item>
+        <item>Furniture</item> 
+        <item>Household Tools</item>
+        <item>Mechanical Tools</item>
+        <item>Toys</item> 
+        <item>Care</item>
+        <item>Medical Devices</item> 
+        <item>Cookware</item> 
+    </string-array>
+     <string-array name="CategoryStuffSubValues">
+        <item>79</item>
+        <item>80</item>
+        <item>81</item> 
+        <item>82</item>
+        <item>83</item>
+        <item>84</item> 
+        <item>85</item>
+        <item>86</item> 
+        <item>87</item> 
+    </string-array>
+    <string-array name="CategoryStuffSubDefault">
+        <item>79</item>
+        <item>80</item>
+        <item>81</item> 
+        <item>82</item>
+        <item>83</item>
+        <item>84</item> 
+        <item>85</item>
+        <item>86</item> 
+        <item>87</item> 
+    </string-array>
+      <string-array name="CategoryTransportSubOptions">
+        <item>Vehicles</item>
+        <item>Traffic</item>
+        <item>Movements</item> 
+    </string-array>
+     <string-array name="CategoryTransportSubValues">
+        <item>89</item>
+        <item>90</item>
+        <item>91</item> 
+    </string-array>
+    <string-array name="CategoryTransportSubDefault">
+        <item>89</item>
+        <item>90</item>
+        <item>91</item> 
+    </string-array>
  </resources>

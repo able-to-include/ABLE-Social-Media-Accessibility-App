@@ -26,9 +26,14 @@ public class Constants {
     //public final static String HOST = "http://arwen.asi-soft.com";     // Arwen
     public final static String HOST = "http://al.abletoinclude.eu";            // Gigas
     
+   public final static String HOSTEX = "http://picto.ccl.kuleuven.be"; 
+   // public final static String HOSTEX = "http://picto.ccl.kuleuven.be"; 
     /**
      * The Simplext webservice path
      */
+  //  public final static String PICTO2TEXT_URL = HOST
+    //        + "/pictototext.php";  
+      public final static String PICTO2TEXT_URL = HOST + "/Picto2Text.php";
  //   public final static String SIMPLEXT_URL = HOST
  //           + ":8080/ABLE_Webservice/ABLE_API/Simplext/";
        public final static String SIMPLEXT_URL = HOST
