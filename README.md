@@ -1,6 +1,12 @@
 # ABLE-Social-Media-Accessibility-App
-ABLE Social Media Accessibility App
-A system overlay running on android devices that integrates the abletoInclude accessibility layer with social media applications.
+
+Able Social is an app to ease the communication between people with Intellectual and Development Disabilities (IDD).
+ 
+The app integrates a set of existing technologies to create an open-source and context aware Accessibility Layer which when integrated with current and future social media applications, it can improve the daily life of people with IDD by understanding their personal situations and helping them to interact with the information society.
+ 
+During the Able to Include project users made it clear that they wanted to use ‘real’ social media applications, the versions their friends are also using. So the project came up with an app allowing for use of the complete social media apps. 
+ 
+The AbleSocial App is described at http://able-to-include.com/accessible-services/application/social-network-app/
 
 ## License
 
